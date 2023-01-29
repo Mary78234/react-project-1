@@ -1,5 +1,9 @@
 import React from "react"; // VERSIN WITHOUT JSX
 import Expenses from "./components/Expenses/Expenses";
+
+/* ARROW FUNCTION  
+const App = () => {}
+*/
 function App() {
   const expenses = [
     {
