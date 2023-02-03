@@ -5,14 +5,15 @@ import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
-  const years = [2023, 2022, 2021, 2020, 2019];
-  const [selectedYear, setYear] = useState(2021);
+  const years = ["2023", "2022", "2021", "2020", "2019"];
+  const [selectedYear, setYear] = useState("2021");
 
   const sendYear = (year) => {
     setYear(year);
+    console.log(year, listExpenses);
   };
   let listExpenses = props.expenses.filter((el) => {
-    return el.date.getFullYear() == selectedYear;
+    return el.date.getFullYear().toString() === selectedYear;
   });
   return (
     <div>
