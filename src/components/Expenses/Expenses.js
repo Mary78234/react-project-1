@@ -7,9 +7,13 @@ import ExpensesFilter from "./ExpensesFilter";
 function Expenses(props) {
   const years = [2023, 2022, 2021, 2020, 2019];
   const [selectedYear, setYear] = useState(2021);
+
   const sendYear = (year) => {
     setYear(year);
   };
+  let listExpenses = props.expenses.filter((el) => {
+    return el.date.getFullYear() == selectedYear;
+  });
   return (
     <div>
       <Card className="expenses">
@@ -18,7 +22,7 @@ function Expenses(props) {
           selected={selectedYear}
           onSendYear={sendYear}
         />
-        {props.expenses.map((ex) => (
+        {listExpenses.map((ex) => (
           <ExpenseItem
             key={ex.id}
             title={ex.title}
