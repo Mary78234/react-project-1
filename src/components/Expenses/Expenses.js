@@ -10,11 +10,23 @@ function Expenses(props) {
 
   const sendYear = (year) => {
     setYear(year);
-    console.log(year, listExpenses);
   };
   let listExpenses = props.expenses.filter((el) => {
     return el.date.getFullYear().toString() === selectedYear;
   });
+
+  //SOLUTION 3
+  let expensesContent = <p>No expenses found.</p>;
+  if (listExpenses.length > 0) {
+    expensesContent = listExpenses.map((ex) => (
+      <ExpenseItem
+        key={ex.id}
+        title={ex.title}
+        amount={ex.amount}
+        date={ex.date}
+      />
+    ));
+  }
   return (
     <div>
       <Card className="expenses">
@@ -23,14 +35,37 @@ function Expenses(props) {
           selected={selectedYear}
           onSendYear={sendYear}
         />
-        {listExpenses.map((ex) => (
-          <ExpenseItem
-            key={ex.id}
-            title={ex.title}
-            amount={ex.amount}
-            date={ex.date}
-          />
-        ))}
+        {
+          //SOLUTION 1
+          /* listExpenses.length === 0 ? (
+            <p>No expenses found.</p>
+          ) : (
+            listExpenses.map((ex) => (
+              <ExpenseItem
+                key={ex.id}
+                title={ex.title}
+                amount={ex.amount}
+                date={ex.date}
+              />
+            ))
+          ) */
+
+          /* 
+          SOLUTION 2
+          {istExpenses.length === 0 && <p>No expenses found.</p>}
+          {listExpenses.length > 0 &&
+            listExpenses.map((ex) => (
+              <ExpenseItem
+                key={ex.id}
+                title={ex.title}
+                amount={ex.amount}
+                date={ex.date}
+              />
+            ))} */
+
+          //SOLUTION 3
+          expensesContent
+        }
       </Card>
     </div>
   );
