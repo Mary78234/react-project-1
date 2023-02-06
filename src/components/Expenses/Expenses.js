@@ -6,7 +6,7 @@ import ExpensesList from "./ExpensesList";
 
 function Expenses(props) {
   const years = ["2023", "2022", "2021", "2020", "2019"];
-  const [selectedYear, setYear] = useState("2021");
+  const [selectedYear, setYear] = useState("2023");
 
   const sendYear = (year) => {
     setYear(year);
