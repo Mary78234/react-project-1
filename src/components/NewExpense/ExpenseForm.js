@@ -42,7 +42,7 @@ const ExpenseForm = (props) => {
     event.preventDefault(); //prevent page to reload if not requested
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
